@@ -1,0 +1,2 @@
+class NewsletterSubscriptionsController < ApplicationController
+end
