@@ -1,0 +1,35 @@
+<p>
+  <strong>Topic:</strong>
+  <%= talk.topic %>
+</p>
+
+<p>
+  <strong>Youtube URL:</strong>
+  <%= talk.video_url %>
+</p>
+
+<% speaker = talk.speaker %>
+<p>
+  <strong>Speaker name:</strong>
+  <%= speaker&.name %>
+</p>
+
+<p>
+  <strong>Speaker email:</strong>
+  <%= speaker.email %>
+</p>
+
+<p>
+  <strong>Speaker bio:</strong>
+  <%= speaker.bio %>
+</p>twitter_handle
+
+<p>
+  <strong>Speaker Linkedin:</strong>
+  <%= speaker.linkedin_url %>
+</p>
+
+<p>
+  <strong>Speaker Twitter:</strong>
+  <%= speaker.twitter_handle %>
+</p>

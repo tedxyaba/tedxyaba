@@ -1,0 +1,60 @@
+<%= form_with(model: talk, local: true, url: event_talks_path(@talk.event_id)) do |form| %>
+  <% if talk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+
+      <ul>
+        <% talk.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :event_id, value: @talk.event_id %>
+
+  <div class="field">
+    <%= form.label :topic %>
+    <%= form.text_field :topic %>
+  </div>
+
+  <div class="field">
+    <%= form.label :video_url %>
+    <%= form.text_field :video_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <h4>Speaker details</h4>
+  <div class="field">
+    <%= form.fields_for :speaker do |ff| %>
+      <div class="field">
+        <%= ff.label :name %>
+        <%= ff.text_field :name %>
+      </div>
+      <div class="field">
+        <%= ff.label :email %>
+        <%= ff.email_field :email %>
+      </div>
+      <div class="field">
+        <%= ff.label :bio %>
+        <%= ff.text_field :bio %>
+      </div>
+      <div class="field">
+        <%= ff.label :linkedin_url %>
+        <%= ff.text_field :linkedin_url %>
+      </div>
+       <div class="field">
+        <%= ff.label :twitter_handle %>
+        <%= ff.text_field :twitter_handle %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @even
   end
 
   # GET /events/new
@@ -64,7 +65,7 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = Event.includes(talks: :speaker).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

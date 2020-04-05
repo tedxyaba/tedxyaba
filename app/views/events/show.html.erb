@@ -25,5 +25,11 @@
   <%= @event.description %>
 </p>
 
+<h4>Talks</h4>
+<% @event.talks.each do |talk| %>
+  <%= render 'talk', talk: talk %>
+<% end %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path %> |
+<%= link_to 'Add Talk', new_event_talk_path(@event) %>
