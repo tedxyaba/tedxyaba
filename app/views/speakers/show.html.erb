@@ -1,0 +1,7 @@
+<div class='container'>
+ <p><strong>Name: </strong><%= @speaker.name %></p>
+ <p><strong>Email: </strong><%= @speaker.email %></p>
+ <p><strong>Bio: </strong><%= @speaker.bio %></p>
+ <p><strong>Linkedin: </strong><%= link_to @speaker.linkedin_url, @speaker.linkedin_url %></p>
+ <p><strong>Twitter: </strong><%= link_to @speaker.twitter_handle, @speaker.twitter_handle %></p>
+</div>

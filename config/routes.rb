@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :partners
   resources :talks, only: [:index]
+  resources :speakers, only: [:show]
   resources :events do
     resources :talks, controller: 'event_talks'
   end
