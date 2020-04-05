@@ -8,6 +8,10 @@ class EventTalksController < ApplicationController
     @talk.build_speaker
   end
 
+  def edit
+    @talk = Talk.find(params[:id])
+  end
+
   def create
     @talk = Talk.new(talk_params)
 
@@ -15,6 +19,16 @@ class EventTalksController < ApplicationController
       redirect_to event_path(params[:event_id])
     else
       render :new
+    end
+  end
+
+  def destroy
+    talk = Talk.find(params[:id])
+    event = talk.event
+    talk.destroy
+    respond_to do |format|
+      format.html { redirect_to event, notice: 'Deleted.' }
+      format.json { head :no_content }
     end
   end
 

@@ -16,6 +16,7 @@
       <th scope="col">Topic</th>
       <th scope="col">Youtube url</th>
       <th scope="col">Speaker</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -29,6 +30,8 @@
         <% else %>
           <td>N/A</td>
         <% end %>
+        <td><%= link_to 'Edit', edit_event_talk_path(@event, talk) %></td>
+        <td><%= link_to 'Delete', event_talk_path(@event, talk), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
