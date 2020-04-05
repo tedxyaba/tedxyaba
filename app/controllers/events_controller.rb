@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @even
+    @event = Event.includes(talks: :speaker).find(params[:id])
   end
 
   # GET /events/new
