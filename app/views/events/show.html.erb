@@ -1,35 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<h2><%= @event.title %></h2>
+<p>Description: <%= @event.description %></p>
+<p>Venue: <%= @event.venue %></p>
+<p>Date: <%= @event.date %></p>
+<p>Time: <%= @event.time %></p>
 
-<p>
-  <strong>Venue:</strong>
-  <%= @event.venue %>
-</p>
+<%= link_to 'Edit', edit_event_path(@event) %>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @event.time %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
 <h4>Talks</h4>
-<% @event.talks.each do |talk| %>
-  <%= render 'talk', talk: talk %>
-<% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Add Talk', new_event_talk_path(@event) %>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Topic</th>
+      <th scope="col">Youtube url</th>
+      <th scope="col">Speaker</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.talks.each do |talk| %>
+      <tr>
+        <td><%= talk.topic %></td>
+        <td><%= talk.video_url %></td>
+        <% if talk.speaker %>
+          <td><%= link_to talk.speaker.name, 'talk.speaker' %></td>
+        <% else %>
+          <td>N/A</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to 'Add Talk', new_event_talk_path(@event), class: 'btn btn-outline-dark btn-sm' %>
