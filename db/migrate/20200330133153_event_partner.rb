@@ -1,4 +1,4 @@
-class EventPartner < ActiveRecord::Migration[6.0]
+class CreateEventPartner < ActiveRecord::Migration[6.0]
   def change
     create_table :event_partners do |t|
       t.references :partner, null: false, foreign_key: true
