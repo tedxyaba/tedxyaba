@@ -5,7 +5,6 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Venue</th>
-      <th scope="col">Date</th>
       <th scope="col">Time</th>
       <th colspan="2"></th>
     </tr>
@@ -16,8 +15,7 @@
       <tr>
         <td><%= link_to event.title, event %></td>
         <td><%= event.venue %></td>
-        <td><%= event.date %></td>
-        <td><%= event.time %></td>
+        <td><%= event.datetime %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

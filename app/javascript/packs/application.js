@@ -18,3 +18,10 @@ require("bootstrap")
 // const imagePath = (name) => images(name, true)
 
 import '../stylesheets/application'
+import flatpickr from 'flatpickr'
+import 'flatpickr/dist/flatpickr.min.css'
+import 'flatpickr/dist/themes/dark.css'
+
+$( document ).on('turbolinks:load', function() {
+  flatpickr(".datepicker", {enableTime: true})
+})
