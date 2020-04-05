@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :venue %>
-    <%= form.text_field :venue %>
+    <%= form.text_field :venue, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date %>
     <%= form.date_select :date %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :time %>
     <%= form.time_select :time %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
+    <% cancel_path = event.new_record? ? events_path : event %>
+    <%= link_to 'Cancel', cancel_path, class: 'btn btn-outline-dark btn-md' %>
   </div>
 <% end %>
