@@ -13,48 +13,49 @@
 
   <%= form.hidden_field :event_id, value: @talk.event_id %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :topic %>
-    <%= form.text_field :topic %>
+    <%= form.text_field :topic, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :video_url %>
-    <%= form.text_field :video_url %>
+    <%= form.text_field :video_url, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date %>
-    <%= form.date_select :date %>
+    <%= form.text_field :date, class: 'form-control datepicker' %>
   </div>
 
   <h4>Speaker details</h4>
-  <div class="field">
+  <div class="form-group">
     <%= form.fields_for :speaker do |ff| %>
-      <div class="field">
+      <div class="form-group">
         <%= ff.label :name %>
-        <%= ff.text_field :name %>
+        <%= ff.text_field :name, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="form-group">
         <%= ff.label :email %>
-        <%= ff.email_field :email %>
+        <%= ff.email_field :email, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="form-group">
         <%= ff.label :bio %>
-        <%= ff.text_field :bio %>
+        <%= ff.text_field :bio, class: 'form-control' %>
       </div>
-      <div class="field">
+      <div class="form-group">
         <%= ff.label :linkedin_url %>
-        <%= ff.text_field :linkedin_url %>
+        <%= ff.text_field :linkedin_url, class: 'form-control' %>
       </div>
-       <div class="field">
+       <div class="form-group">
         <%= ff.label :twitter_handle %>
-        <%= ff.text_field :twitter_handle %>
+        <%= ff.text_field :twitter_handle, class: 'form-control' %>
       </div>
     <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
+    <%= link_to 'Cancel', event_path(@talk.event_id), class: 'btn btn-outline-dark btn-md' %>
   </div>
 <% end %>

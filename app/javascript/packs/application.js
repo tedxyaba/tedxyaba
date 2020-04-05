@@ -23,5 +23,6 @@ import 'flatpickr/dist/flatpickr.min.css'
 import 'flatpickr/dist/themes/dark.css'
 
 $( document ).on('turbolinks:load', function() {
-  flatpickr(".datepicker", {enableTime: true})
+  flatpickr(".datetimepicker", {enableTime: true})
+  flatpickr(".datepicker")
 })
