@@ -13,32 +13,37 @@
 
   <div class="form-group">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name, class: 'custom-select' %>
+    <%= form.text_field :first_name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name, class: 'custom-select' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :role %>
-    <%= form.text_field :role, class: 'custom-select' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :linkedin_url %>
-    <%= form.text_field :linkedin_url, class: 'custom-select' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :twitter_handle %>
-    <%= form.text_field :twitter_handle, class: 'custom-select' %>
+    <%= form.text_field :last_name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= form.label :bio %>
-    <%= form.text_field :bio, class: 'custom-select' %>
+    <%= form.text_area :bio, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :linkedin_url %>
+    <%= form.text_field :linkedin_url, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :twitter_handle %>
+    <%= form.text_field :twitter_handle, class: 'form-control' %>
+  </div>
+
+  <div class="custom-file mb-4">
+    <%= form.label :avatar, class: 'custom-file-label' %>
+    <%= form.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: 'custom-file-input' %>
   </div>
 
   <div class="text-center">

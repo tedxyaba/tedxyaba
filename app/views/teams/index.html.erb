@@ -5,10 +5,11 @@
     <tr>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
+      <th scope="col">Bio</th>
       <th scope="col">Role</th>
       <th scope="col">Linkedin url</th>
       <th scope="col">Twitter handle</th>
-      <th scope="col">Bio</th>
+      <th scope="col">Image</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,10 +19,15 @@
       <tr>
         <td><%= team.first_name %></td>
         <td><%= team.last_name %></td>
+        <td><%= team.bio %></td>
         <td><%= team.role %></td>
         <td><%= team.linkedin_url %></td>
         <td><%= team.twitter_handle %></td>
-        <td><%= team.bio %></td>
+        <td>
+          <% if team.avatar.attached? %>
+            <%= image_tag team.avatar.variant(resize_to_limit: [100, 100]) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
         <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
