@@ -1,0 +1,28 @@
+<%= form_with(model: partner, local: true) do |form| %>
+  <% if partner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(partner.errors.count, "error") %> prohibited this partner from being saved:</h2>
+
+      <ul>
+        <% partner.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.check_box :community %>
+    <%= form.label :community %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
+    <%= link_to 'Cancel', partners_path, class: 'btn btn-outline-dark btn-md' %>
+  </div>
+<% end %>
