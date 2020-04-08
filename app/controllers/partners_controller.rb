@@ -4,7 +4,7 @@ class PartnersController < ApplicationController
   # GET /partners
   # GET /partners.json
   def index
-    @partners = Partner.all
+    @partners = Partner.where(community: true)
   end
 
 
@@ -65,6 +65,7 @@ class PartnersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def partner_params
+    params[:partner][:community] = true if params[:partner]
     params.require(:partner).permit(:name, :community)
   end
 end
