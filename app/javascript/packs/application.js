@@ -25,4 +25,9 @@ import 'flatpickr/dist/themes/dark.css'
 $( document ).on('turbolinks:load', function() {
   flatpickr(".datetimepicker", {enableTime: true})
   flatpickr(".datepicker")
+
+  $('.custom-file-input').change(function(e){
+    const fileName = e.target.files[0].name;
+    $(e.target).siblings('.custom-file-label').html(fileName)
+  });
 })

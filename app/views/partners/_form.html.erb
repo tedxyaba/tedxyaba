@@ -16,6 +16,11 @@
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
+  <div class="custom-file mb-4">
+    <%= form.label :logo, class: 'custom-file-label' %>
+    <%= form.file_field :logo, accept: 'image/png,image/gif,image/jpeg', class: 'custom-file-input' %>
+  </div>
+
   <div class="text-center">
     <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
     <%= link_to 'Cancel', partners_path, class: 'btn btn-outline-dark btn-md' %>

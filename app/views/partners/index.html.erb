@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Community</th>
+      <th scope="col">Logo</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -13,7 +13,11 @@
     <% @partners.each do |partner| %>
       <tr>
         <td><%= partner.name %></td>
-        <td><%= partner.community %></td>
+        <td>
+          <% if partner.logo.attached? %>
+            <%= image_tag partner.logo.variant(resize_to_limit: [100, 100]) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_partner_path(partner) %></td>
         <td><%= link_to 'Destroy', partner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

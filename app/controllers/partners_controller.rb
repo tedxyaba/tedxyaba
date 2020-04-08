@@ -66,6 +66,6 @@ class PartnersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def partner_params
     params[:partner][:community] = true if params[:partner]
-    params.require(:partner).permit(:name, :community)
+    params.require(:partner).permit(:name, :community, :logo)
   end
 end

@@ -1,2 +1,7 @@
-json.extract! partner, :id, :name, :community, :created_at, :updated_at
-json.url partner_url(partner, format: :json)
+json.partner_name partner.name
+
+if partner.logo.attached?
+  json.logo_url url_for(partner.logo)
+else
+  json.logo_url nil
+end
