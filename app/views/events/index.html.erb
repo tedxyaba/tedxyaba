@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th scope="col">Title</th>
+      <th scope="col">Category</th>
       <th scope="col">Venue</th>
       <th scope="col">Time</th>
       <th colspan="2"></th>
@@ -14,6 +15,7 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to event.title, event %></td>
+        <td><%= event.category %></td>
         <td><%= event.venue %></td>
         <td><%= event.datetime %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
