@@ -1,0 +1,48 @@
+<%= form_with(model: team, local: true) do |form| %>
+  <% if team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+        <% team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'custom-select' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'custom-select' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role, class: 'custom-select' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :linkedin_url %>
+    <%= form.text_field :linkedin_url, class: 'custom-select' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :twitter_handle %>
+    <%= form.text_field :twitter_handle, class: 'custom-select' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bio %>
+    <%= form.text_field :bio, class: 'custom-select' %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
+    <%= link_to 'Cancel', teams_path, class: 'btn btn-outline-dark btn-md' %>
+  </div>
+<% end %>
