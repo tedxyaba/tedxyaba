@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resource :newsletter_subscriptions, only: [:create, :index]
+  resources :newsletter_subscriptions, only: [:create, :index]
   resources :teams, except:  [:show]
   resources :partners, except:  [:show]
   resources :talks, only: [:index]

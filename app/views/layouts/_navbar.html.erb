@@ -15,6 +15,9 @@
       <li class="nav-item">
         <%= link_to 'Team members', teams_path, class: 'nav-link' %>
       </li>
+      <li class="nav-item">
+        <%= link_to 'Newsletter subs', newsletter_subscriptions_path, class: 'nav-link' %>
+      </li>
       <% if current_user %>
         <li class="nav-item">
           <%= link_to 'Logout', destroy_user_session_path, class: 'nav-link', method: :delete  %>

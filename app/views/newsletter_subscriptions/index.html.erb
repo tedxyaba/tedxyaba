@@ -1,0 +1,17 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @newsletter_subscriptions.each_with_index do |newsletter_subscription, index| %>
+      <tr>
+        <td><%= index.next %>
+        <td><%= newsletter_subscription.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
