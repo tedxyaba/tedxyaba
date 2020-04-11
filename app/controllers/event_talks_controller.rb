@@ -12,6 +12,16 @@ class EventTalksController < ApplicationController
     @talk = Talk.find(params[:id])
   end
 
+  def update
+    @talk = Talk.find(params[:id])
+
+    if @talk.update(talk_params)
+      redirect_to event_path(params[:event_id])
+    else
+      render :edit
+    end
+  end
+
   def create
     @talk = Talk.new(talk_params)
 
@@ -41,7 +51,7 @@ class EventTalksController < ApplicationController
       :date,
       :event_id,
       speaker_attributes: [
-        :name, :email, :bio, :linkedin_url, :twitter_handle
+        :name, :email, :bio, :linkedin_url, :twitter_handle, :avatar
       ]
     )
   end

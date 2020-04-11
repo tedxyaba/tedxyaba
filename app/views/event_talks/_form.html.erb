@@ -1,4 +1,4 @@
-<%= form_with(model: talk, local: true, url: event_talks_path(@talk.event_id)) do |form| %>
+<%= form_with(model: [talk.event, talk], local: true) do |form| %>
   <% if talk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
@@ -50,6 +50,10 @@
        <div class="form-group">
         <%= ff.label :twitter_handle %>
         <%= ff.text_field :twitter_handle, class: 'form-control' %>
+      </div>
+      <div class="custom-file mb-4">
+        <%= ff.label :avatar, class: 'custom-file-label' %>
+        <%= ff.file_field :avatar, accept: 'image/png,image/gif,image/jpeg', class: 'custom-file-input' %>
       </div>
     <% end %>
   </div>
