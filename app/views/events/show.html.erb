@@ -29,9 +29,7 @@
         <td><%= talk.video_url %></td>
         <td>
           <% if talk.speaker %>
-            <td><%= link_to talk.speaker.name, talk.speaker %></td>
-          <% else %>
-            <td>N/A</td>
+            <%= link_to talk.speaker.name, talk.speaker %>
           <% end %>
         </td>
         <td>
