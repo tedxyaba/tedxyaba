@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    if request.format.json?
+      @events = Event.published
+    else
+      @events = Event.all
+    end
   end
 
   # GET /events/1
@@ -15,7 +19,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = Event.new(is_draft: true)
   end
 
   # GET /events/1/edit
@@ -70,6 +74,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :venue, :datetime, :description, :category)
+      params.require(:event).permit(:title, :venue, :datetime, :description, :category, :is_draft)
     end
 end

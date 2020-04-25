@@ -9,4 +9,6 @@ class Event < ApplicationRecord
 
   validates_inclusion_of :category, in: CATEGORIES
 
+  scope :published, -> { where(is_draft: false) }
+
 end

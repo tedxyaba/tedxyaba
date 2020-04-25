@@ -36,6 +36,11 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
+  <div class="form-check">
+    <%= form.check_box :is_draft, class: 'form-check-input' %>
+    <%= form.label :is_draft, class: 'form-check-label' %>
+  </div>
+
   <div class="text-center">
     <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
     <% cancel_path = event.new_record? ? events_path : event %>
