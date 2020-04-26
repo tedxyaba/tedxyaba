@@ -15,23 +15,26 @@ class Event < ApplicationRecord
     filters ||= {}
     # default to only published events
     objs = include_drafts == 'true' ? all : published
-    objs = _filter_objs_by_year(objs, filters[:event_year]) if filters[:event_year].present?
-    objs = _filter_objs_by_category(objs, filters[:category]) if filters[:category].present?
-    objs = _filter_objs_by_title(objs, filters[:event_title]) if filters[:event_title].present?
+    objs = _filter_objs_by_year(objs, filters[:event_year])
+    objs = _filter_objs_by_category(objs, filters[:category])
+    objs = _filter_objs_by_title(objs, filters[:event_title])
     return objs
   end
 
 
   private
   def self._filter_objs_by_year(objs, event_year)
+    return objs unless event_year
     objs.where('extract(year from datetime) = ?', event_year.to_s)
   end
 
   def self._filter_objs_by_category(objs, category)
+    return objs unless category
     objs.where(category: category)
   end
 
   def self._filter_objs_by_title(objs, event_title)
+    return objs unless event_title
     objs.where('lower(title) ilike ?', "%#{event_title.downcase}%")
   end
 end
