@@ -1,6 +1,5 @@
 class TalksController < ApplicationController
   def index
-    @talks = Talk.includes(:speaker).all
-    #todo: add filtering
+    @talks = Talk.includes(:speaker).published
   end
 end
