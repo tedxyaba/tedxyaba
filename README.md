@@ -1,24 +1,11 @@
-# README
+This powers the [tedxyaba-web](https://github.com/tedxyaba/tedxyaba-web) repository for [TEDxYaba](tedxyaba.com) website.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- ruby version: 2.6.4
+- rails version: 6
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### To contribute
+1. clone the repo
+2. run `$ bundle`
+3. migrate database
+4. run `rspec` to make sure things are up
+5. hack away
