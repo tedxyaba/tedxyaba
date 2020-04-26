@@ -1,5 +1,4 @@
-This powers the [tedxyaba-web](https://github.com/tedxyaba/tedxyaba-web) repository for [TEDxYaba](tedxyaba.com) website.
-
+### Details
 - ruby version: 2.6.4
 - rails version: 6
 
