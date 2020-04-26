@@ -11,13 +11,13 @@ class Event < ApplicationRecord
 
   scope :published, -> { where(is_draft: false) }
 
-  def self.filtered_by_params(filter_params)
-    filter_params ||= {}
+  def self.filtered_by_params(filters:, include_drafts:)
+    filters ||= {}
     # default to only published events
-    objs = filter_params[:include_draft] ? all : published
-    objs = _filter_objs_by_year(objs, filter_params[:event_year]) if filter_params[:event_year].present?
-    objs = _filter_objs_by_category(objs, filter_params[:category]) if filter_params[:category].present?
-    objs = _filter_objs_by_title(objs, filter_params[:event_title]) if filter_params[:event_title].present?
+    objs = include_drafts == 'true' ? all : published
+    objs = _filter_objs_by_year(objs, filters[:event_year]) if filters[:event_year].present?
+    objs = _filter_objs_by_category(objs, filters[:category]) if filters[:category].present?
+    objs = _filter_objs_by_title(objs, filters[:event_title]) if filters[:event_title].present?
     return objs
   end
 

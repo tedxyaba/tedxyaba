@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if request.format.json?
-      @events = Event.filtered_by_params(params[:filters])
+      @events = Event.filtered_by_params(filters: params[:filters], include_drafts: params[:include_drafts])
     else
       @events = Event.all
     end

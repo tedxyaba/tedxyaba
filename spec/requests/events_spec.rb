@@ -30,7 +30,7 @@ RSpec.describe EventsController, type: :request do
     end
 
     context 'requesting drafts too' do
-      let(:filter_params) { { include_draft: true } }
+      let(:request_path) { "/events?include_drafts=true" }
 
       it 'works' do
         make_request
