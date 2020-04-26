@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
@@ -14,7 +14,11 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.includes(talks: :speaker).find(params[:id])
+    if request.format.json?
+      @event = Event.includes(talks: :speaker).find_via_identifier(params[:id])
+    else
+      @event = Event.includes(talks: :speaker).find(params[:id])
+    end
   end
 
   # GET /events/new
@@ -30,6 +34,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.slug = @event.title.downcase[0..6] unless @event.slug.present?
 
     respond_to do |format|
       if @event.save
@@ -74,6 +79,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :venue, :datetime, :description, :category, :is_draft)
+      params.require(:event).permit(:title, :venue, :datetime, :description, :category, :is_draft, :slug)
     end
 end

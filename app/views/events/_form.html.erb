@@ -36,6 +36,11 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :slug, "Slug (this can be used for the link to the event)" %>
+    <%= form.text_area :slug, class: 'form-control' %>
+  </div>
+
   <div class="form-check">
     <%= form.check_box :is_draft, class: 'form-check-input' %>
     <%= form.label :is_draft, class: 'form-check-label' %>

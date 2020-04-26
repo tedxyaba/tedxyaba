@@ -5,6 +5,7 @@
 <p>Description: <%= @event.description %></p>
 <p>Venue: <%= @event.venue %></p>
 <p>Time: <%= @event.datetime %></p>
+<p>Slug: <%= @event.slug %></p>
 <p>Status: <%= @event.is_draft ? 'Draft' : 'Published' %></p>
 
 <%= link_to 'Edit', edit_event_path(@event) %>

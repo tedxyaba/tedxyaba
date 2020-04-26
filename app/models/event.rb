@@ -8,8 +8,24 @@ class Event < ApplicationRecord
   CATEGORIES = ['Main Event', 'TEDxYabaWomen', 'TEDxYabaTeen', 'TEDxYabaYouth', 'TEDxYabaSalon'].freeze
 
   validates_inclusion_of :category, in: CATEGORIES
+  validates_presence_of :slug, :title
+  validates_uniqueness_of :slug
+
+  before_save :downcase_slug
 
   scope :published, -> { where(is_draft: false) }
+
+  def downcase_slug
+    self.slug = self.slug.downcase
+  end
+
+  def self.find_via_identifier(id)
+    if id.to_i > 0
+      where(id: id).first
+    else
+      where(slug: id).first
+    end
+  end
 
   def self.filtered_by_params(filters:, include_drafts:)
     filters ||= {}
@@ -20,7 +36,6 @@ class Event < ApplicationRecord
     objs = _filter_objs_by_title(objs, filters[:event_title])
     return objs
   end
-
 
   private
   def self._filter_objs_by_year(objs, event_year)

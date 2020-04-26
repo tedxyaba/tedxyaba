@@ -7,6 +7,7 @@
       <th scope="col">Category</th>
       <th scope="col">Venue</th>
       <th scope="col">Time</th>
+      <th scope="col">Slug</th>
       <th scope="col">Status</th>
       <th colspan="2"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= event.category %></td>
         <td><%= event.venue %></td>
         <td><%= event.datetime %></td>
+        <td><%= event.slug %></td>
         <td><%= event.is_draft ? 'Draft' : 'Published' %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

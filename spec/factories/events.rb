@@ -5,6 +5,7 @@ FactoryBot.define do
     description { 'to start something again or do something again, in a way that is new and interesting' }
     datetime { DateTime.now }
     category { 'TEDxYabaSalon' }
+    sequence(:slug) { |n| "reboot-#{n}" }
 
     trait :published do
       is_draft { false }

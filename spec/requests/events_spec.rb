@@ -15,6 +15,11 @@ RSpec.describe EventsController, type: :request do
       expect(res.map{|b| b['id']}).to contain_exactly(published_event.id)
     end
 
+    it 'includes slug in response' do
+      make_request
+      expect(res[0]['slug']).not_to be_empty
+    end
+
     shared_examples 'response with data' do
       it 'works' do
         make_request
@@ -90,6 +95,27 @@ RSpec.describe EventsController, type: :request do
       make_request
       expect(res['talks']).not_to be_empty
       expect(res['talks'][0]['speaker_name']).to eq('Mira Mitha')
+    end
+
+    it 'includes slug in response' do
+      make_request
+      expect(res['slug']).not_to be_empty
+    end
+
+    context 'requesting with slug' do
+      let(:request_path) { "/events/event_slug" }
+
+      it 'should work' do
+        published_event.update(slug: 'event_slug')
+        make_request
+        expect(res).not_to be_empty
+      end
+
+      it 'should not work with no recognized slug' do
+        published_event.update(slug: 'another_slug')
+        make_request
+        expect(res).to be_empty
+      end
     end
   end
 end
