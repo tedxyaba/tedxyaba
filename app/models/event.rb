@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   def self.filtered_by_params(filter_params)
     filter_params ||= {}
     # default to only published events
-    objs = filter_params[:draft] ? all : published
+    objs = filter_params[:include_draft] ? all : published
     objs = _filter_objs_by_year(objs, filter_params[:event_year]) if filter_params[:event_year].present?
     objs = _filter_objs_by_category(objs, filter_params[:category]) if filter_params[:category].present?
     objs = _filter_objs_by_title(objs, filter_params[:event_title]) if filter_params[:event_title].present?

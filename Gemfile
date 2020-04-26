@@ -45,3 +45,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'database_cleaner-active_record'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+end
