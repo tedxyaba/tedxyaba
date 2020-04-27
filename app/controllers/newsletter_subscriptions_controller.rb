@@ -10,10 +10,13 @@ class NewsletterSubscriptionsController < ApplicationController
   # POST /newsletter_subscriptions.json
   def create
     @newsletter_subscription = NewsletterSubscription.new(newsletter_subscription_params)
-    @newsletter_subscription.save
 
     respond_to do |format|
-      format.json { render json: 'success', status: :created }
+      if @newsletter_subscription.save
+        format.json { render json: 'success', status: :created }
+      else
+        format.json { render json: @newsletter_subscription.errors.full_messages, status: :unprocessable_entity }
+      end
     end
   end
 
