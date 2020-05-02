@@ -2,6 +2,7 @@ json.array! @talks do |talk|
   json.id talk.id
   json.topic talk.topic
   json.video_url talk.video_url
+  json.video_duration talk.video_duration
   json.date talk.date
   json.event_id talk.event_id
 

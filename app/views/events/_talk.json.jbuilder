@@ -1,4 +1,4 @@
-json.extract! talk, :id, :topic, :video_url, :date
+json.extract! talk, :id, :topic, :video_url, :video_duration, :date
 json.speaker_name talk.speaker.name
 json.speaker_email talk.speaker.email
 json.speaker_bio talk.speaker.bio
