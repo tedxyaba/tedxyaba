@@ -6,7 +6,9 @@ class Talk < ApplicationRecord
 
   accepts_nested_attributes_for :speaker
 
-  before_validation :fetch_youtube_duration, if: -> { video_url_changed? && video_url.present? }
+  before_validation :fetch_youtube_duration,
+    if: -> { video_url_changed? && video_url.present? },
+    unless: -> { Rails.env.test? }
 
   scope :published, -> { joins(:event).where(events: {is_draft: false}) }
 

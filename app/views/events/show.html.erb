@@ -39,6 +39,8 @@
         <td>
           <% if talk.speaker.avatar.attached? %>
             <%= image_tag talk.speaker.avatar.variant(resize_to_limit: [100, 100]) %>
+          <% else %>
+            <p>N/A</p>
           <% end %>
         </td>
         <td><%= link_to 'Edit', edit_event_talk_path(@event, talk) %></td>

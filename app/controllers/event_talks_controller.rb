@@ -51,7 +51,7 @@ class EventTalksController < ApplicationController
       :date,
       :event_id,
       speaker_attributes: [
-        :name, :email, :bio, :linkedin_url, :twitter_handle, :avatar
+        :id, :name, :email, :bio, :linkedin_url, :twitter_handle, :avatar
       ]
     )
   end
