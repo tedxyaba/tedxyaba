@@ -1,10 +1,40 @@
 class Talk < ApplicationRecord
+  YOUTUBE_CONTENT_URI = 'https://www.googleapis.com/youtube/v3/videos'.freeze
+
   belongs_to :speaker
   belongs_to :event
 
   accepts_nested_attributes_for :speaker
 
+  before_validation :fetch_youtube_duration, if: -> { video_url_changed? && video_url.present? }
+
   scope :published, -> { joins(:event).where(events: {is_draft: false}) }
+
+  def fetch_youtube_duration
+    params = {
+      key: Rails.application.credentials.dig(:googleapis, :youtube_api_key),
+      part: 'contentDetails',
+      id: id_from_video_url
+    }
+    uri = URI(YOUTUBE_CONTENT_URI)
+    uri.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(uri)
+    if res.is_a?(Net::HTTPSuccess)
+      j_body = JSON.parse(res.body)
+      video_item = j_body['items'][0]
+      if video_item
+        self.video_duration = video_item['contentDetails']['duration']
+      else
+        errors.add(:base, 'Video URL is not a valid youtube video url')
+      end
+    end
+  end
+
+  def id_from_video_url
+    uri = URI(video_url)
+    query_params = Rack::Utils.parse_nested_query(uri.query)
+    query_params['v']
+  end
 
   def self.filtered_by_params(filters:, include_drafts:)
     filters ||= {}

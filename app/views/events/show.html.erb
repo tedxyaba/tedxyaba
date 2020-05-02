@@ -18,6 +18,7 @@
     <tr>
       <th scope="col">Topic</th>
       <th scope="col">Youtube url</th>
+      <th scope="col">Video Duration</th>
       <th scope="col">Speaker</th>
       <th scope="col">Speaker Img</th>
       <th colspan="2"></th>
@@ -29,6 +30,7 @@
       <tr>
         <td><%= talk.topic %></td>
         <td><%= talk.video_url %></td>
+        <td><%= talk.video_duration %></td>
         <td>
           <% if talk.speaker %>
             <%= link_to talk.speaker.name, talk.speaker %>
