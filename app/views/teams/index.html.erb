@@ -1,39 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th scope="col">First name</th>
-      <th scope="col">Last name</th>
-      <th scope="col">Bio</th>
-      <th scope="col">Role</th>
-      <th scope="col">Linkedin url</th>
-      <th scope="col">Twitter handle</th>
-      <th scope="col">Image</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.first_name %></td>
-        <td><%= team.last_name %></td>
-        <td><%= team.bio %></td>
-        <td><%= team.role %></td>
-        <td><%= team.linkedin_url %></td>
-        <td><%= team.twitter_handle %></td>
-        <td>
-          <% if team.avatar.attached? %>
-            <%= image_tag team.avatar.variant(resize_to_limit: [100, 100]) %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="table-responsive-md">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="d-flex">
+        <th width=3>#</th>
+        <th class="col-1">First name</th>
+        <th class="col-1">Last name</th>
+        <th class="col-3">Bio</th>
+        <th class="col-1">Role</th>
+        <th class="col-2">Linkedin url</th>
+        <th class="col-2">Twitter handle</th>
+        <th class="col-1">Image</th>
+        <th colspan="2" class="col-1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr class="d-flex">
+          <td width=3 class="overflow-hidden"><%= team.order_position %></td>
+          <td class="col-1 overflow-hidden"><%= team.first_name %></td>
+          <td class="col-1 overflow-hidden"><%= team.last_name %></td>
+          <td class="col-3 overflow-hidden"><%= team.bio %></td>
+          <td class="col-1 overflow-hidden"><%= team.role %></td>
+          <td class="col-2 overflow-hidden"><%= team.linkedin_url %></td>
+          <td class="col-2 overflow-hidden"><%= team.twitter_handle %></td>
+          <td class="col-1 overflow-hidden">
+            <% if team.avatar.attached? %>
+              <%= image_tag team.avatar.variant(resize_to_limit: [100, 100]) %>
+            <% end %>
+          </td>
+
+          <td class="col-1">
+            <%= link_to 'Edit', edit_team_path(team) %>
+            <%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

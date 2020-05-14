@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = Team.all.order('order_position asc nulls last')
   end
 
   # GET /teams/new
@@ -64,6 +64,15 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.require(:team).permit(:first_name, :last_name, :role, :linkedin_url, :twitter_handle, :bio, :avatar)
+      params.require(:team).permit(
+        :first_name,
+        :last_name,
+        :role,
+        :linkedin_url,
+        :twitter_handle,
+        :bio,
+        :avatar,
+        :order_position
+      )
     end
 end
