@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Team Member', new_team_path, class: 'btn btn-outline-dark btn-sm mb-4' %>
+
 <div class="table-responsive-md">
   <table class="table table-bordered table-hover">
     <thead>
@@ -41,7 +43,3 @@
     </tbody>
   </table>
 </div>
-
-<br>
-
-<%= link_to 'New Team Member', new_team_path, class: 'btn btn-outline-dark btn-sm' %>

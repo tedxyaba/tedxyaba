@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Event', new_event_path, class: 'btn btn-outline-dark btn-sm mb-4' %>
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -28,5 +30,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Event', new_event_path, class: 'btn btn-outline-dark btn-sm' %>

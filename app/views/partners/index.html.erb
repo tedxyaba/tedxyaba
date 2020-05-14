@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'New Partner', new_partner_path, class: 'btn btn-outline-dark btn-sm mb-4' %>
+
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -24,7 +26,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Partner', new_partner_path, class: 'btn btn-outline-dark btn-sm' %>
