@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :speakers, only: [:show]
   resources :events do
     resources :talks, controller: 'event_talks'
+    resources :partners, controller: 'event_partners'
   end
   devise_for :users
 

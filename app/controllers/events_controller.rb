@@ -15,7 +15,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     if request.format.json?
-      @event = Event.includes(talks: :speaker).find_via_identifier(params[:id])
+      @event = Event.includes(
+        talks: :speaker,
+        event_partners: :partner
+      ).find_via_identifier(params[:id])
     else
       @event = Event.includes(talks: :speaker).find(params[:id])
     end

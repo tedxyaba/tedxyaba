@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   has_many :talks, dependent: :destroy
   has_many :speakers, through: :talks
 
-  has_many :event_partners
+  has_many :event_partners, dependent: :destroy
   has_many :partners, through: :event_partners
 
   CATEGORIES = ['Main Event', 'TEDxYabaWomen', 'TEDxYabaTeen', 'TEDxYabaYouth', 'TEDxYabaSalon'].freeze

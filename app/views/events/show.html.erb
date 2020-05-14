@@ -7,6 +7,7 @@
 <p>Time: <%= @event.datetime %></p>
 <p>Slug: <%= @event.slug %></p>
 <p>Status: <%= @event.is_draft ? 'Draft' : 'Published' %></p>
+<p>View partners <%= link_to "here", event_partners_path(@event) %></p>
 
 <%= link_to 'Edit', edit_event_path(@event) %>
 
