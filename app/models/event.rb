@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   has_many :event_partners, dependent: :destroy
   has_many :partners, through: :event_partners
 
+  has_one_attached :theme_banner
+
   CATEGORIES = ['Main Event', 'TEDxYabaWomen', 'TEDxYabaTeen', 'TEDxYabaYouth', 'TEDxYabaSalon'].freeze
 
   validates_inclusion_of :category, in: CATEGORIES

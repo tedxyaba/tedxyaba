@@ -41,6 +41,11 @@
     <%= form.text_field :slug, class: 'form-control' %>
   </div>
 
+  <div class="custom-file mb-4">
+    <%= form.label :theme_banner, class: 'custom-file-label' %>
+    <%= form.file_field :theme_banner, accept: 'image/png,image/gif,image/jpeg', class: 'custom-file-input' %>
+  </div>
+
   <div class="form-check">
     <%= form.check_box :is_draft, class: 'form-check-input' %>
     <%= form.label :is_draft, class: 'form-check-label' %>
