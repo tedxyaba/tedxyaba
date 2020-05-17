@@ -15,6 +15,7 @@
     <% if @event.theme_banner.attached? %>
        <%= image_tag @event.theme_banner %>
     <% end %>
+    <p class="mt-4">Registration link: <%= @event.registration_link %></p>
   </div>
 </div>
 

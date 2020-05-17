@@ -90,7 +90,8 @@ class EventsController < ApplicationController
         :category,
         :is_draft,
         :slug,
-        :theme_banner
+        :theme_banner,
+        :registration_link
       )
     end
 end

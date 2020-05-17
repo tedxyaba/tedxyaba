@@ -41,6 +41,11 @@
     <%= form.text_field :slug, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :registration_link %>
+    <%= form.text_field :registration_link, class: 'form-control' %>
+  </div>
+
   <div class="custom-file mb-4">
     <%= form.label :theme_banner, class: 'custom-file-label' %>
     <%= form.file_field :theme_banner, accept: 'image/png,image/gif,image/jpeg', class: 'custom-file-input' %>
