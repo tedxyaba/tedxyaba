@@ -48,6 +48,6 @@ class EventPartnersController < ApplicationController
   end
 
   def partner_params
-    params.require(:partner).permit(:name, :logo)
+    params.require(:partner).permit(:name, :logo, :bio, :link)
   end
 end

@@ -7,6 +7,8 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Bio</th>
+      <th scope="col">Link</th>
       <th scope="col">Logo</th>
       <th colspan="2"></th>
     </tr>
@@ -16,6 +18,8 @@
     <% @partners.each do |partner| %>
       <tr>
         <td><%= partner.name %></td>
+        <td><%= partner.bio %></td>
+        <td><%= partner.link %></td>
         <td>
           <% if partner.logo.attached? %>
             <%= image_tag partner.logo.variant(resize_to_limit: [100, 100]) %>
