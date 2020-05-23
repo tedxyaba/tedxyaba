@@ -42,6 +42,7 @@ class Talk < ApplicationRecord
     filters ||= {}
     # default to only published talks
     objs = include_drafts == 'true' ? all : published
+    objs = objs.where.not(video_url: nil)
     objs = _filter_objs_by_year(objs, filters[:event_year])
     objs = _filter_objs_by_topic_or_speaker(objs, filters[:query])
     objs = _filter_objs_by_category(objs, filters[:category])
