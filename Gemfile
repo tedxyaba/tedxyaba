@@ -25,6 +25,7 @@ gem 'devise'
 gem 'google-cloud-storage', require: false
 gem 'image_processing'
 gem 'mini_magick'
+gem 'httparty'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
