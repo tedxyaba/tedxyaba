@@ -6,6 +6,7 @@ if @event
   else
     json.theme_banner nil
   end
-  json.talks @event.talks, partial: "events/talk", as: :talk
+  json.talks @event.talks.where.not(video_url: [nil, '']), partial: "events/talk", as: :talk
   json.partners @event.partners, partial: "partners/partner", as: :partner
+  json.speakers @event.talks, partial: "events/speaker", as: :talk
 end
