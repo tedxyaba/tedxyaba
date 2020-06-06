@@ -14,4 +14,16 @@ RSpec.describe Event, type: :model do
       expect(Event.published).not_to include(draft_event)
     end
   end
+
+  describe 'past? and future?' do
+    it 'reflects relativity of event time to current time' do
+      draft_event.datetime = 1.minutes.ago
+      expect(draft_event.past?).to be_truthy
+      expect(draft_event.future?).to be_falsey
+
+      draft_event.datetime = 1.minute.from_now
+      expect(draft_event.past?).to be_falsey
+      expect(draft_event.future?).to be_truthy
+    end
+  end
 end

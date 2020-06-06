@@ -21,6 +21,14 @@ class Event < ApplicationRecord
     self.slug = self.slug.downcase
   end
 
+  def past?
+    Time.now > self.datetime
+  end
+
+  def future?
+    !past?
+  end
+
   def self.find_via_identifier(id)
     if id.to_i > 0
       where(id: id).first
