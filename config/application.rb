@@ -33,5 +33,12 @@ module Tedxyaba
     config.generators.system_tests = nil
     config.time_zone = "West Central Africa"
     config.active_record.default_timezone = :local
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end

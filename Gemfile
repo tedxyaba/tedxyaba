@@ -27,6 +27,8 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'httparty'
 
+gem 'rack-cors'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
