@@ -23,6 +23,7 @@ class NewsletterSubscriptionsController < ApplicationController
   private
   # Only allow a list of trusted parameters through.
   def newsletter_subscription_params
-    params.permit(:email)
+    params[:req_host] = request.host
+    params.permit(:email, :req_host)
   end
 end
