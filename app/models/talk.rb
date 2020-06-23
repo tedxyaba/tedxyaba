@@ -40,14 +40,20 @@ class Talk < ApplicationRecord
 
   def self.filtered_by_params(filters:, include_drafts:)
     filters ||= {}
+    per_page_limit = (filters[:per_page] || 15).to_i
+    page_count = (filters[:page_count] || 0).to_i
+    offset = per_page_limit * page_count
+
     # default to only published talks
     objs = include_drafts == 'true' ? all : published
+    objs = objs.order(id: :desc)
     objs = objs.where.not(video_url: [nil, ''])
     objs = _filter_objs_by_year(objs, filters[:event_year])
     objs = _filter_objs_by_topic_or_speaker(objs, filters[:query])
     objs = _filter_objs_by_category(objs, filters[:category])
     objs = _filter_objs_by_events(objs, filters[:event])
-    return objs
+
+    return objs.offset(offset).limit(per_page_limit)
   end
 
   private

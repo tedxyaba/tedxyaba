@@ -111,5 +111,31 @@ RSpec.describe EventsController, type: :request do
         it_behaves_like 'response with no data'
       end
     end
+
+    describe 'pagination' do
+      let(:filter_params) { { per_page: '2' } }
+      let!(:talk_2) { create(:talk) }
+      let!(:talk_3) { create(:talk) }
+      let!(:talk_4) { create(:talk) }
+      let!(:talk_5) { create(:talk) }
+
+      it 'defaults page to 0' do
+        make_request
+        expect(res.size).to eq(2)
+        expect(res[0]['id']).to eq(talk_5.id)
+        expect(res[1]['id']).to eq(talk_4.id)
+      end
+
+      context 'with page specified' do
+        let(:filter_params) { { per_page: '2', page_count: 1 } }
+
+        it 'fetches the right page' do
+          make_request
+          expect(res.size).to eq(2)
+          expect(res[0]['id']).to eq(talk_3.id)
+          expect(res[1]['id']).to eq(talk_2.id)
+        end
+      end
+    end
   end
 end

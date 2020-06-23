@@ -84,6 +84,32 @@ RSpec.describe EventsController, type: :request do
         it_behaves_like 'response with no data'
       end
     end
+
+    describe 'pagination' do
+      let(:filter_params) { { per_page: '2' } }
+      let!(:event_2) { create(:event, :published) }
+      let!(:event_3) { create(:event, :published) }
+      let!(:event_4) { create(:event, :published) }
+      let!(:event_5) { create(:event, :published) }
+
+      it 'defaults page to 0' do
+        make_request
+        expect(res.size).to eq(2)
+        expect(res[0]['id']).to eq(event_5.id)
+        expect(res[1]['id']).to eq(event_4.id)
+      end
+
+      context 'with page specified' do
+        let(:filter_params) { { per_page: '2', page_count: 1 } }
+
+        it 'fetches the right page' do
+          make_request
+          expect(res.size).to eq(2)
+          expect(res[0]['id']).to eq(event_3.id)
+          expect(res[1]['id']).to eq(event_2.id)
+        end
+      end
+    end
   end
 
   describe 'show details' do
