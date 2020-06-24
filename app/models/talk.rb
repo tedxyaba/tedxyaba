@@ -52,8 +52,8 @@ class Talk < ApplicationRecord
     objs = _filter_objs_by_topic_or_speaker(objs, filters[:query])
     objs = _filter_objs_by_category(objs, filters[:category])
     objs = _filter_objs_by_events(objs, filters[:event])
-    return objs
-    # return objs.offset(offset).limit(per_page_limit)
+
+    return objs.offset(offset).limit(per_page_limit)
   end
 
   private

@@ -112,7 +112,7 @@ RSpec.describe EventsController, type: :request do
       end
     end
 
-    xdescribe 'pagination' do
+    describe 'pagination' do
       let(:filter_params) { { per_page: '2' } }
       let!(:talk_2) { create(:talk) }
       let!(:talk_3) { create(:talk) }

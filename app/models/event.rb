@@ -48,8 +48,8 @@ class Event < ApplicationRecord
     objs = _filter_objs_by_year(objs, filters[:event_year])
     objs = _filter_objs_by_category(objs, filters[:category])
     objs = _filter_objs_by_title(objs, filters[:event_title])
-    return objs
-    # return objs.offset(offset).limit(per_page_limit)
+
+    return objs.offset(offset).limit(per_page_limit)
   end
 
   private
