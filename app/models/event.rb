@@ -40,8 +40,8 @@ class Event < ApplicationRecord
   def self.filtered_by_params(filters:, include_drafts:)
     filters ||= {}
     per_page_limit = (filters[:per_page] || 15).to_i
-    page_count = (filters[:page_count] || 0).to_i
-    offset = per_page_limit * page_count
+    page_count = (filters[:page_count] || 1).to_i
+    offset = per_page_limit * (page_count - 1)
 
     objs = filterd_objs(filters: filters, include_drafts: include_drafts)
     objs = objs.order(id: :desc)

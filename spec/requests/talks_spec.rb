@@ -128,15 +128,16 @@ RSpec.describe EventsController, type: :request do
 
       it_behaves_like 'returning total count'
 
-      it 'defaults page to 0' do
+      it 'defaults page to 1' do
         make_request
         expect(res.size).to eq(2)
         expect(res[0]['id']).to eq(talk_5.id)
         expect(res[1]['id']).to eq(talk_4.id)
+        expect(JSON.parse(response.body)['page_count'].to_i).to eq(1)
       end
 
       context 'with page specified' do
-        let(:filter_params) { { per_page: '2', page_count: 1 } }
+        let(:filter_params) { { per_page: '2', page_count: 2 } }
 
         it_behaves_like 'returning total count'
 
@@ -145,6 +146,7 @@ RSpec.describe EventsController, type: :request do
           expect(res.size).to eq(2)
           expect(res[0]['id']).to eq(talk_3.id)
           expect(res[1]['id']).to eq(talk_2.id)
+          expect(JSON.parse(response.body)['page_count'].to_i).to eq(2)
         end
       end
     end

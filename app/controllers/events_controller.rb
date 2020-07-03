@@ -5,8 +5,10 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     if request.format.json?
-      @events = Event.filtered_by_params(filters: params[:filters], include_drafts: params[:include_drafts])
-      @total_count = Event.filtered_by_params_total_count(filters: params[:filters], include_drafts: params[:include_drafts])
+      filters = params[:filters] || {}
+      @page_count = filters[:page_count] || 1
+      @events = Event.filtered_by_params(filters: filters, include_drafts: params[:include_drafts])
+      @total_count = Event.filtered_by_params_total_count(filters: filters, include_drafts: params[:include_drafts])
     else
       @events = Event.all
     end
