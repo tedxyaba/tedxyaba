@@ -1,4 +1,4 @@
-json.array! @talks do |talk|
+json.talks @talks do |talk|
   json.id talk.id
   json.topic talk.topic
   json.video_url talk.video_url
@@ -12,3 +12,4 @@ json.array! @talks do |talk|
     json.linkedin_url talk.speaker.linkedin_url
   end
 end
+json.total_count @total_count

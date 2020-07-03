@@ -7,9 +7,10 @@ RSpec.describe EventsController, type: :request do
   let(:request_headers) { { "content-type": "application/json", "Accept": "application/json" } }
   let(:filter_params) { {} }
   let(:make_request) { get(request_path, params: {filters: filter_params}, headers: request_headers ) }
-  let(:res) { JSON.parse(response.body) }
 
   describe 'list index' do
+    let(:res) { JSON.parse(response.body)['events'] }
+
     it 'only return published events' do
       make_request
       expect(res.map{|b| b['id']}).to contain_exactly(published_event.id)
@@ -92,6 +93,15 @@ RSpec.describe EventsController, type: :request do
       let!(:event_4) { create(:event, :published) }
       let!(:event_5) { create(:event, :published) }
 
+      shared_examples 'returning total count' do
+        it 'works' do
+          make_request
+          expect(JSON.parse(response.body)['total_count']).to eq(5)
+        end
+      end
+
+      it_behaves_like 'returning total count'
+
       it 'defaults page to 0' do
         make_request
         expect(res.size).to eq(2)
@@ -101,6 +111,8 @@ RSpec.describe EventsController, type: :request do
 
       context 'with page specified' do
         let(:filter_params) { { per_page: '2', page_count: 1 } }
+
+        it_behaves_like 'returning total count'
 
         it 'fetches the right page' do
           make_request
@@ -114,6 +126,7 @@ RSpec.describe EventsController, type: :request do
 
   describe 'show details' do
     let(:request_path) { "/events/#{published_event.id}" }
+    let(:res) { JSON.parse(response.body) }
 
     before { create(:talk, event: published_event) }
 

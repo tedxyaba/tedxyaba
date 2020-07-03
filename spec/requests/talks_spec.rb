@@ -7,7 +7,7 @@ RSpec.describe EventsController, type: :request do
   let(:request_headers) { { "content-type": "application/json", "Accept": "application/json" } }
   let(:filter_params) { {} }
   let(:make_request) { get(request_path, params: {filters: filter_params}, headers: request_headers ) }
-  let(:res) { JSON.parse(response.body) }
+  let(:res) { JSON.parse(response.body)['talks'] }
 
   describe 'listing talks' do
     it 'only return published talks' do
@@ -119,6 +119,15 @@ RSpec.describe EventsController, type: :request do
       let!(:talk_4) { create(:talk) }
       let!(:talk_5) { create(:talk) }
 
+      shared_examples 'returning total count' do
+        it 'works' do
+          make_request
+          expect(JSON.parse(response.body)['total_count']).to eq(5)
+        end
+      end
+
+      it_behaves_like 'returning total count'
+
       it 'defaults page to 0' do
         make_request
         expect(res.size).to eq(2)
@@ -128,6 +137,8 @@ RSpec.describe EventsController, type: :request do
 
       context 'with page specified' do
         let(:filter_params) { { per_page: '2', page_count: 1 } }
+
+        it_behaves_like 'returning total count'
 
         it 'fetches the right page' do
           make_request

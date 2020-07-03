@@ -44,19 +44,30 @@ class Talk < ApplicationRecord
     page_count = (filters[:page_count] || 0).to_i
     offset = per_page_limit * page_count
 
-    # default to only published talks
-    objs = include_drafts == 'true' ? all : published
+    objs = filterd_objs(filters: filters, include_drafts: include_drafts)
     objs = objs.order(id: :desc)
-    objs = objs.where.not(video_url: [nil, ''])
-    objs = _filter_objs_by_year(objs, filters[:event_year])
-    objs = _filter_objs_by_topic_or_speaker(objs, filters[:query])
-    objs = _filter_objs_by_category(objs, filters[:category])
-    objs = _filter_objs_by_events(objs, filters[:event])
 
     return objs.offset(offset).limit(per_page_limit)
   end
 
+  def self.filtered_by_params_total_count(filters:, include_drafts:)
+    filterd_objs(filters: filters, include_drafts: include_drafts).count
+  end
+
   private
+  def self.filterd_objs(filters:, include_drafts:)
+    filters ||= {}
+    # default to only published events
+    objs = include_drafts == 'true' ? all : published
+
+    objs = _filter_objs_by_year(objs, filters[:event_year])
+    objs = _filter_objs_by_topic_or_speaker(objs, filters[:query])
+    objs = _filter_objs_by_category(objs, filters[:category])
+    objs = _filter_objs_by_events(objs, filters[:event])
+    objs = objs.where.not(video_url: [nil, ''])
+    return objs
+  end
+
   def self._filter_objs_by_year(objs, event_year)
     return objs unless event_year
     objs.where('extract(year from date) = ?', event_year.to_s)
