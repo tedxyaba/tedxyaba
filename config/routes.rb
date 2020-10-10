@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     resources :talks, controller: 'event_talks'
     resources :partners, controller: 'event_partners'
   end
+  resources :dynamic_copies do
+    collection do
+      get :get_by_key
+    end
+  end
   devise_for :users
 
   root 'events#index'

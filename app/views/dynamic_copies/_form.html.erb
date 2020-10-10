@@ -1,0 +1,28 @@
+<%= form_with(model: copy, local: true) do |form| %>
+  <% if copy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(copy.errors.count, "error") %> prohibited this copy from being saved:</h2>
+
+      <ul>
+        <% copy.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :key %>
+    <%= form.text_field :key, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :copy %>
+    <%= form.text_area :copy, class: 'form-control' %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit 'Submit', class: 'btn btn-outline-success btn-md mr-2' %>
+    <%= link_to 'Cancel', dynamic_copies_path, class: 'btn btn-outline-dark btn-md' %>
+  </div>
+<% end %>

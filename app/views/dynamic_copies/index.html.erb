@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Copy', new_dynamic_copy_path, class: 'btn btn-outline-dark btn-sm mb-4' %>
+
+<div class="table-responsive-md">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr class="d-flex">
+        <th class="col-1">#</th>
+        <th class="col-2">Key</th>
+        <th class="col-7">Copy Text</th>
+        <th colspan="2" class="col-2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @copies.each_with_index do |copy, index| %>
+        <tr class="d-flex">
+          <td class="col-1 overflow-hidden"><%= index %></td>
+          <td class="col-2 overflow-hidden"><%= copy.key %></td>
+          <td class="col-7 overflow-hidden"><%= copy.copy %></td>
+
+
+          <td class="col-2">
+            <%= link_to 'Edit', edit_dynamic_copy_path(copy) %>
+            <%= link_to 'Destroy', copy, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
