@@ -6,9 +6,7 @@
   <table class="table table-bordered table-hover">
     <thead>
       <tr class="d-flex">
-        <th width=3>#</th>
-        <th class="col-1">First name</th>
-        <th class="col-1">Last name</th>
+        <th class="col-2">#/Full name</th>
         <th class="col-3">Bio</th>
         <th class="col-1">Role</th>
         <th class="col-2">Linkedin url</th>
@@ -20,10 +18,9 @@
 
     <tbody>
       <% @teams.each do |team| %>
+        <% position_text = team.order_position ? "##{team.order_position} - " : '' %>
         <tr class="d-flex">
-          <td width=3 class="overflow-hidden"><%= team.order_position %></td>
-          <td class="col-1 overflow-hidden"><%= team.first_name %></td>
-          <td class="col-1 overflow-hidden"><%= team.last_name %></td>
+          <td class="col-2 overflow-hidden"><%= "#{position_text}#{team.first_name} #{team.last_name}" %></td>
           <td class="col-3 overflow-hidden"><%= team.bio %></td>
           <td class="col-1 overflow-hidden"><%= team.role %></td>
           <td class="col-2 overflow-hidden"><%= team.linkedin_url %></td>
