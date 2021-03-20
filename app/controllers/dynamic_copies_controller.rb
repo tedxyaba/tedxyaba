@@ -38,6 +38,15 @@ class DynamicCopiesController < ApplicationController
     end
   end
 
+  def destroy
+    @copy = DynamicCopy.find(params[:id])
+    @copy.destroy
+    respond_to do |format|
+      format.html { redirect_to dynamic_copies_url, notice: 'Successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
   def dynamic_copies_params
     params.require(:dynamic_copy).permit(:key, :copy)
