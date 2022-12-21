@@ -8,3 +8,8 @@
 3. migrate database
 4. run `rspec` to make sure things are up
 5. hack away
+
+### Versions
+1. Ruby: 2.7.7
+2. Rails: 6.0.0
+5. Webpacker: 5.4.3

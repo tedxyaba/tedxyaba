@@ -48,12 +48,12 @@ RSpec.describe EventsController, type: :request do
       let(:filter_params) { { event_year: '2020' } }
 
       context 'when event year matches' do
-        before { published_event.update(datetime: DateTime.new(2020)) }
+        before { published_event.update(datetime: DateTime.new(2020, 05)) }
         it_behaves_like 'response with data'
       end
 
       context 'when event year does not match' do
-        before { published_event.update(datetime: DateTime.new(2010)) }
+        before { published_event.update(datetime: DateTime.new(2010, 05)) }
         it_behaves_like 'response with no data'
       end
     end
