@@ -1,6 +1,7 @@
 ### Details
 - ruby version: 3.1.3
 - rails version: 7
+- node version: 18.x
 
 ### To contribute
 1. clone the repo
