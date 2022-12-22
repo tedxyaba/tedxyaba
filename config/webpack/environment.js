@@ -11,10 +11,10 @@ environment.plugins.prepend('Provide',
 )
 
 // https://stackoverflow.com/questions/69394632/webpack-build-failing-with-err-ossl-evp-unsupported
-environment.config.merge({
-  output: {
-    hashFunction: "xxhash64"
-  }
-})
+// environment.config.merge({
+//   output: {
+//     hashFunction: "xxhash64"
+//   }
+// })
 
 module.exports = environment
