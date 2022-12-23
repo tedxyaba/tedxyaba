@@ -23,13 +23,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# maybe can remove these?
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-
 # ignore schema file
 /db/schema.rb
