@@ -27,6 +27,9 @@ gem 'httparty'
 
 gem 'rack-cors'
 
+gem "importmap-rails", "~> 1.1"
+gem 'bootstrap', '~> 5.1.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -53,5 +56,3 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
 end
-
-gem "importmap-rails", "~> 1.1"
