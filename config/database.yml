@@ -77,9 +77,8 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
+
 production:
   <<: *default
   database: tedxyaba_production
-  username: tedxyaba
-  password: <%= ENV['TEDXYABA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
