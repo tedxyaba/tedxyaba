@@ -1,14 +1,16 @@
 # Be sure to restart your server when you modify this file.
 
-# Specify a serializer for the signed and encrypted cookie jars.
-# Valid options are :json, :marshal, and :hybrid.
-Rails.application.config.action_dispatch.cookies_serializer = :json
+# Avoid CORS issues when API is called from the frontend app.
+# Handle Cross-Origin Resource Sharing (CORS) in order to accept cross-origin AJAX requests.
 
-# Rails 6 has support for blocking requests from unknown hosts, so origin domains will need to be added there as well.
-Rails.application.config.hosts << "be.tedxyaba.com"
-Rails.application.config.hosts << "tedxyaba.herokuapp.com"
-Rails.application.config.hosts << "staging-tedxyaba.herokuapp.com"
+# Read more: https://github.com/cyu/rack-cors
 
-# may not need these
-Rails.application.config.hosts << "tedxyaba.com"
-Rails.application.config.hosts << "tedxyaba-web.herokuapp.com"
+# Rails.application.config.middleware.insert_before 0, Rack::Cors do
+#   allow do
+#     origins "example.com"
+#
+#     resource "*",
+#       headers: :any,
+#       methods: [:get, :post, :put, :patch, :delete, :options, :head]
+#   end
+# end
