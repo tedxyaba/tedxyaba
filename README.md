@@ -12,3 +12,9 @@
 ### Notes
 - Images are saved on google cloud
 - Env vars and secrets are stored in the rails credentials. Ask for the master-key to unlock
+
+
+### Deployment
+- we deploy to fly.io
+- to deploy, run:
+  fly deploy --build-secret RAILS_MASTER_KEY=<insert master key here>

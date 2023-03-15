@@ -49,16 +49,16 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=1fb76b79d751ba05b79788ee605abccec0261b5cfd227a10bda0a51f9fc775d61c8afe114f98152a835f79bc8d9d8690b8d7cf5c01cf80be82cab039c5cd703d ./bin/rails assets:precompile
-
+# Precompiling assets for production
+RUN --mount=type=secret,id=RAILS_MASTER_KEY \
+    RAILS_MASTER_KEY="$(cat /run/secrets/RAILS_MASTER_KEY)" ./bin/rails assets:precompile
 
 # Final stage for app image
 FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y imagemagick libvips postgresql-client && \
+    apt-get install --no-install-recommends -y imagemagick libvips postgresql-client nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # # Run and own the application files as a non-root user for security
