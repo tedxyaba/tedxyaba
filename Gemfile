@@ -55,3 +55,5 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
 end
+
+gem "dockerfile-rails", ">= 1.1", :group => :development
