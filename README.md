@@ -15,6 +15,6 @@
 
 
 ### Deployment
-- we deploy to fly.io
+- we deploy to fly.io (using [flyctl](https://fly.io/docs/hands-on/install-flyctl/))
 - to deploy, run:
   fly deploy --build-secret RAILS_MASTER_KEY=<insert master key here>
